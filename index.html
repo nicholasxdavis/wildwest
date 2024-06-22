@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild West Smokeshop</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <script defer src="js/scripts.js"></script>
+    <script defer src="js/scripts2.js"></script>
+    <script defer src="js/scripts3.js"></script>
+</head>
+<body>
+    <div id="age-popup" class="age-popup">
+        <div class="age-popup-content">
+            <h2>Are you 21 or older?</h2>
+            <p>You must be 21+ years old to enter this site.</p>
+            <button id="confirm-age">Yes, I am 21 or older</button>
+        </div>
+    </div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="img/logo.svg" alt="Wild West Smokeshop Logo">
+            </div>
+            <nav>
+                <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+                <ul id="nav-links">
+
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="location.html">Location</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="home">
+            <div class="content">
+                <h3>Wild West Smokeshop</h3>
+                <p>Located in the Mesilla Valley Mall at 700 S Telshor Blvd, Las Cruces, NM 88011</p>
+            </div>
+        </section>
+        <section id="gallery">
+        <div class="content">
+            <h2>Gallery</h2>
+            <div class="gallery-container">
+                <div class="gallery">
+                    <img src="./img/gallery/img.jpeg" alt="Image 1">
+                    <img src="./img/gallery/img%20-%20Copy.jpeg"  alt="Image 2">
+                    <img src="./img/gallery/img%20-%20Copy%20(2).jpeg" alt="Image 3">
+                    <img src="./img/gallery/img%20-%20Copy%20(3).jpeg" alt="Image 4">
+                    <img src="./img/gallery/img%20-%20Copy%20(4).jpeg" alt="Image 5">
+                </div>
+            </div>
+        </div>
+    </section>
+        <section id="location">
+            <div class="content">
+                <h2>Our Location</h2>
+                <p>
+                    +1 575-270-5620<br>
+                    Mesilla Valley Mall<br>
+                    700 S Telshor Blvd, Las Cruces, NM 88011 <br>
+                    Mon-Sat 11am - 8pm, Sun 12pm - 6pm
+                </p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3372.046095525345!2d-106.74575812387762!3d32.31061530767446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86de3d0305fe4315%3A0x46cd7073ffe7282d!2sWild%20West%20smoke%20shop!5e0!3m2!1sen!2sus!4v1718948143050!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <button type="button" onclick="window.location.href='https://www.google.com/maps/dir//Wild+West+smoke+shop,+South+Telshor+Boulevard,+Las+Cruces,+NM/@32.312546,-106.7661599,966m/data=!3m1!1e3!4m8!4m7!1m0!1m5!1m1!1s0x86de3d0305fe4315:0x46cd7073ffe7282d!2m2!1d-106.7431832!2d32.3106108?hl=en&entry=ttu'">Get Directions</button>
+    </section>
+        <section id="about">
+            <div class="content">
+                <h2>About Us</h2>
+                <p>Welcome to Wild West Smokeshop, your go-to destination for all things smoke-related in Las Cruces, New Mexico! We pride ourselves on offering a wide range of high-quality products to meet the diverse needs of our community.<br>
+                <br>At Wild West Smokeshop, you'll find an extensive selection of tobacco, cigars, vapes, and accessories, carefully curated to ensure we have something for everyone. Our knowledgeable and friendly staff are always here to help you find exactly what you're looking for and to provide expert advice on our products.<br>
+                <br>We believe in creating a welcoming and relaxed environment where you can explore our offerings at your own pace. Whether you're a seasoned connoisseur or just starting out, we're here to support your journey and ensure you have the best experience possible.<br>
+                <br>Thank you for choosing Wild West Smokeshop. We look forward to serving you and becoming your trusted partner in all your smoking needs.</p>
+            </div>
+        </section>
+        <section id="contact">
+            <h1>Contact Us</h1>
+            <p>Please fill out the form below and we'll get back to you shortly.</p>
+            <form id="contact-form" action="https://formspree.io/f/mqazzkkq" method="POST">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://www.google.com/maps/place/Wild+West+smoke+shop/@32.3106108,-106.7457581,17z/data=!3m1!4b1!4m6!3m5!1s0x86de3d0305fe4315:0x46cd7073ffe7282d!8m2!3d32.3106108!4d-106.7431832!16s%2Fg%2F11vz5xlbtb?entry=ttu" target="_blank"><img src="img/icons/google.svg" alt="Google" class="social-icon"></a>
+                <a href="https://www.instagram.com/wildwestlc/" target="_blank"><img src="img/icons/instagram.svg" alt="Instagram" class="social-icon"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
