@@ -106,7 +106,7 @@ h1, h2 {
     margin-bottom: 20px;
 }
 h3 {
-    margin-top: -200px;
+    margin-top: -240px;
     color: #444;
     margin-bottom: 20px;
     font-size: 30px;
@@ -354,7 +354,7 @@ body.no-scroll {
     text-align: center;
 }
 #gallery {
-    margin-top: -220px;
+    margin-top: -280px;
 }
 #about {
     margin-top: -65px;
