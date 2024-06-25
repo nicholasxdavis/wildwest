@@ -17,7 +17,7 @@
 
 .gallery img:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
 .gallery::-webkit-scrollbar {
@@ -25,12 +25,12 @@
 }
 
 .gallery::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #444;
     border-radius: 10px;
 }
 
 .gallery::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #222;
 }
 
 /* Gallery Container */
@@ -40,7 +40,7 @@
     overflow: hidden;
     position: relative;
     height: 500px;
-    max-width: 100%px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -55,6 +55,7 @@
     text-align: center;
     padding: 50px 0;
 }
+
 #location2 h2,
 #contact2 h2, 
 #about2 h2 {
@@ -70,7 +71,7 @@
 #about2 h2, 
 #location2 h2 {
     margin-bottom: 20px;
-    color: #333;
+    color: #e0e0e0;
     font-size: 2.5em;
     font-weight: 700;
     text-transform: uppercase;
@@ -80,7 +81,7 @@
 /* Button Styles */
 button {
     background-color: #333;
-    color: white;
+    color: #e0e0e0;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -102,10 +103,10 @@ button[type="submit"] {
 #contact-form {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #1e1e1e;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     animation: slideUp 0.5s ease-in-out;
 }
 
@@ -118,19 +119,23 @@ button[type="submit"] {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
+    color: #e0e0e0;
 }
 
 .form-group input, .form-group textarea {
     width: calc(100% - 20px);
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ddd;
+    border: 1px solid #444;
     border-radius: 4px;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
 }
 
 .form-group textarea {
     resize: vertical;
 }
+
 /* Location Styles */
 #location, #location2 {
     flex-direction: column;
