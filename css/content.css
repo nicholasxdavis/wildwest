@@ -189,7 +189,10 @@ button[type="submit"] {
     margin-top: -270px;
 }
 
-
-#location2, #about2, #contact2 {
+#about2, #contact2 {
     margin-top: -260px;
+}
+#location2 {
+    margin-top: -260px;
+
 }
