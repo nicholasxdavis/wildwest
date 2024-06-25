@@ -6,20 +6,7 @@ body {
     background-color: #121212;
     color: #e0e0e0;
     line-height: 1.6;
-}
-
-p {
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 20px;
-    opacity: 0.8; 
-    margin-bottom: 60px;
-    margin-top: -15px;
-    max-width: 1000px; 
-    margin-left: auto;
-    margin-right: auto;
+    overflow-x: hidden;
 }
 
 header {
@@ -93,16 +80,55 @@ section .content {
     margin: 0 auto;
     text-align: center;
 }
+p {
+    text-align: center;
+    font-family: "dejavu-sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    opacity: 0.8; 
+    margin-bottom: 60px;
+    margin-top: -15px;
+    max-width: 1000px; 
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Horizontal offset, vertical offset, blur radius, color */
+}
+#home p {
+    color: #e0e0e0;
+    text-align: center;
+    font-family: "dejavu-sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    opacity: 0.8; 
+    margin-bottom: 60px;
+    margin-top: -15px;
+    max-width: 1000px; 
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Horizontal offset, vertical offset, blur radius, color */
+}
 
 h1, h2 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0);
     color: #e0e0e0;
     margin-bottom: 20px;
 }
 h3 {
-    margin-top: -240px;
-    color: #e0e0e0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0);
     margin-bottom: 20px;
+    margin-top: -280px;
     font-size: 30px;
+    z-index: -1000;
+}
+@media(max-width: 768px)  {
+    #home h3 {
+        margin-top: -270px;
+        z-index: -1000;
+    }
 }
 h6 {
     margin-top: -55px;
@@ -229,4 +255,46 @@ body.no-scroll {
     font-optical-sizing: auto;
     font-weight: <weight>;
     font-style: normal;
+}
+#homepic {
+    position: relative;
+    background: url('./img/gallery/gallery(5).png') no-repeat center center / cover;
+    height: 40vh; /* Full viewport height */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add a subtle shadow to text */
+    overflow: hidden;
+    border-radius: 8px; /* Rounded corners */
+    margin-top: -225px;
+    right: 18px;
+    z-index: -99;
+    transform: scaleY(-1); /* Flip vertically */
+}
+
+#homepic:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%; /* Height of the fade */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); /* Gradient for the fade */
+    z-index: 10; /* Ensure it's above the background image */
+}
+
+#homepic img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the image */
+}
+
+@media (max-width: 768px) {
+    #homepic {
+        height: 16vh; /* Full viewport height */
+        width: 100%;
+    }
 }
