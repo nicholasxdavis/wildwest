@@ -40,13 +40,13 @@
     overflow: hidden;
     position: relative;
     height: 500px;
-    max-width: 650px;
+    max-width: 100%px;
     margin: 0 auto;
 }
 
 @media (max-width: 600px) {
     .gallery-container {
-        height: 300px;
+        height: 450px;
     }
 }
 
@@ -146,7 +146,7 @@ button[type="submit"] {
 
 /* Adjustments for other sections */
 #gallery {
-    margin-top: -220px;
+    margin-top: -120px;
 }
 
 #about {
@@ -162,7 +162,7 @@ button[type="submit"] {
 }
 
 #location {
-    margin-top: -120px;
+    margin-top: -200px;
 }
 
 #location2, #about2, #contact2 {
