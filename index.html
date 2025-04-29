@@ -185,6 +185,30 @@
         }
     </script>
 </head>
+<script> 
+document.addEventListener('DOMContentLoaded', () => {
+  // Select all links that point to an ID (#)
+  const links = document.querySelectorAll('a[href^="#"]');
+
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent instant jump
+
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        // Smoothly scroll to the element
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start' // scroll to the top of the element
+        });
+      }
+    });
+  });
+});
+
+</script>
 <body class="antialiased bg-bg text-text-primary">
    
     
@@ -192,16 +216,16 @@
 <!-- Navigation -->
 <nav class="bg-white py-5 px-6 sticky top-0 z-50 border-b border-gray-100 shadow-sm" id="main-nav">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="#" class="flex items-center">
+        <a href="index.html" class="flex items-center">
             <img src="img/wildwest.svg" alt="Wildwest Smokeshop" class="h-20">
         </a>
         
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center space-x-10">
-            <a href="#collection" class="nav-link font-medium text-gray-700 hover:text-black">Our Collection</a>
+            <a href="#collections" class="nav-link font-medium text-gray-700 hover:text-black">Our Collection</a>
             <a href="#about" class="nav-link font-medium text-gray-700 hover:text-black">Our Story</a>
             <a href="#location" class="nav-link font-medium text-gray-700 hover:text-black">Our Location</a>
-            <a href="#connect" class="nav-link font-medium text-gray-700 hover:text-black">Stay Connected</a>
+            <a href="contact.html" class="nav-link font-medium text-gray-700 hover:text-black">Contact</a>
         </div>
         
         <!-- Mobile Menu Button -->
@@ -225,10 +249,10 @@
         </div>
         
         <div class="flex flex-col space-y-6">
-            <a href="#collection" class="mobile-nav-link text-lg font-medium text-gray-700 hover:text-black py-2">Our Collection</a>
+            <a href="#collections" class="mobile-nav-link text-lg font-medium text-gray-700 hover:text-black py-2">Our Collection</a>
             <a href="#about" class="mobile-nav-link text-lg font-medium text-gray-700 hover:text-black py-2">Our Story</a>
             <a href="#location" class="mobile-nav-link text-lg font-medium text-gray-700 hover:text-black py-2">Our Location</a>
-            <a href="#connect" class="mobile-nav-link text-lg font-medium text-gray-700 hover:text-black py-2">Stay Connected</a>
+            <a href="contact.html" class="mobile-nav-link text-lg font-medium text-gray-700 hover:text-black py-2">Contact</a>
         </div>
     </div>
 </nav>
@@ -273,98 +297,156 @@
     });
 </script>
     
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden rounded-b-3xl">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="img/about.JPG" 
-                 alt="Premium Smoke Shop" 
-                 class="w-full h-full object-cover">
-        </div>
-        
-      <div class="absolute inset-0 bg-black opacity-50 z-1"></div>
+<!-- Include Animate.css -->
+<!-- Include Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-        
-        <!-- Hero Content -->
-        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-   <h1 class="text-5xl md:text-7xl font-bold font-display text-white mb-6 leading-tight uppercase">
+<style>
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.4); /* 40% opacity black overlay */
+    transition: opacity 1.5s ease-out; /* Smooth transition */
+  }
+</style>
 
-                Your #1 Smoke Shop in Las Cruces
-            </h1>
-            <p class="text-xl text-secondary-100 mb-8">
-                Curated glass, exclusive accessories, and the finest products in Las Cruces. 
-                Serving enthusiasts and connoisseurs since 2023.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#" class="bg-primary-700 hover:bg-primary-800 text-white px-8 py-4 rounded-full font-medium transition duration-300 text-sm uppercase tracking-wider">
-                    Shop Collections
-                </a>
-                <a href="#" class="bg-white hover:bg-gray-100 text-primary-800 px-8 py-4 rounded-full font-medium transition duration-300 text-sm uppercase tracking-wider">
-                    Visit Our Lounge
-                </a>
-            </div>
-        </div>
-    </section>
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden rounded-b-3xl">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img src="img/about.JPG" 
+             alt="Premium Smoke Shop" 
+             class="w-full h-full object-cover animate__animated animate__fadeIn">
+    </div>
     
-    <!-- Featured Products -->
-    <section class="py-20 bg-bg-secondary">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold font-display text-primary-800 mb-4">CURATED COLLECTIONS</h2>
-                <p class="text-text-secondary max-w-2xl mx-auto">Premium smoking accessories hand-selected by our experts</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product 1 -->
-                <a href="#" class="product-card group">
-                    <div class="relative h-80 overflow-hidden rounded-section">
-                        <img src="img/glass.JPG" 
-                             alt="Glass Collection" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-6">
-                            <div>
-                                <h3 class="text-xl font-bold text-white">Artisan Glass</h3>
-                                <p class="text-secondary-100 text-sm">Handcrafted pieces from local artists</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Product 2 -->
-                <a href="#" class="product-card group">
-                    <div class="relative h-80 overflow-hidden rounded-section">
-                        <img src="img/vapes.JPG" 
-                             alt="Vape Collection" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-6">
-                            <div>
-                                <h3 class="text-xl font-bold text-white">Premium Vapes</h3>
-                                <p class="text-secondary-100 text-sm">Top brands & exclusive flavors</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Product 3 -->
-                <a href="#" class="product-card group">
-                    <div class="relative h-80 overflow-hidden rounded-section">
-                        <img src="img/cbd.JPG" 
-                             alt="CBD Collection" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-6">
-                            <div>
-                                <h3 class="text-xl font-bold text-white">CBD Wellness</h3>
-                                <p class="text-secondary-100 text-sm">Premium hemp products</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+    <!-- Controlled Darkness Overlay -->
+    <div class="hero-overlay absolute inset-0 z-1 animate__animated animate__fadeIn animate__delay-0.5s"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <h1 class="text-5xl md:text-7xl font-bold font-display text-white mb-6 leading-tight uppercase animate__animated animate__fadeInUp animate__delay-1s">
+            Your #1 Smoke Shop in Las Cruces
+        </h1>
+        <p class="text-xl text-white mb-8 animate__animated animate__fadeInUp animate__delay-1.5s">
+            Curated glass, exclusive accessories, and the finest products in Las Cruces. 
+            Serving enthusiasts and connoisseurs since 2023.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 animate__animated animate__fadeInUp animate__delay-2s">
+            <a href="#collections" class="bg-primary-700 hover:bg-primary-800 text-white px-8 py-4 rounded-full font-medium transition duration-300 text-sm uppercase tracking-wider">
+                Our Collection
+            </a>
+            <a href="#location" class="bg-white hover:bg-gray-100 text-primary-800 px-8 py-4 rounded-full font-medium transition duration-300 text-sm uppercase tracking-wider">
+                Our Location
+            </a>
         </div>
-    </section>
+    </div>
+</section>
+    
+<!-- Featured Products -->
+<section id="collections" class="py-20 bg-bg-secondary">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <!-- Heroicon Book/Education -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto mb-8 h-8 w-8 text-primary-800">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+            </svg>
+
+            <h2 class="text-3xl md:text-4xl font-bold font-display text-primary-800 mb-4">CURATED COLLECTIONS</h2>
+            <p class="text-text-secondary max-w-2xl mx-auto">Premium smoking accessories hand-selected by our experts</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Product 1 -->
+            <a href="#" class="product-card group animate__animated">
+                <div class="relative h-80 overflow-hidden rounded-section">
+                    <img src="img/glass.JPG" 
+                         alt="Glass Collection" 
+                         class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex items-end p-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Artisan Glass</h3>
+                            <p class="text-secondary-100 text-sm">Handcrafted pieces from local artists</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Product 2 -->
+            <a href="#" class="product-card group animate__animated">
+                <div class="relative h-80 overflow-hidden rounded-section">
+                    <img src="img/vapes.JPG" 
+                         alt="Vape Collection" 
+                         class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex items-end p-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Premium Vapes</h3>
+                            <p class="text-secondary-100 text-sm">Top brands & exclusive flavors</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Product 3 -->
+            <a href="#" class="product-card group animate__animated">
+                <div class="relative h-80 overflow-hidden rounded-section">
+                    <img src="img/cbd.JPG" 
+                         alt="CBD Collection" 
+                         class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex items-end p-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">CBD Wellness & Exotic Snacks</h3>
+                            <p class="text-secondary-100 text-sm">Premium hemp products & Imported foreign goods.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Add this to your head section -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
+<script>
+    // Wait for the page to load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the section element
+        const section = document.getElementById('collections');
+        // Get all product cards
+        const productCards = document.querySelectorAll('.product-card');
+        
+        // Initially hide the cards
+        productCards.forEach(card => {
+            card.style.opacity = '0';
+        });
+        
+        // Create an intersection observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // When section comes into view, animate each card with a delay
+                    productCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.classList.add('animate__fadeInUp');
+                            card.style.setProperty('--animate-duration', '0.6s');
+                        }, index * 150); // 150ms delay between each card
+                    });
+                    
+                    // Stop observing after animation triggers
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% of section is visible
+        
+        // Start observing the section
+        observer.observe(section);
+    });
+</script>
     
 <!-- About Us Section -->
-<section class="py-20 bg-accent-900 leaf-pattern">
+<section id="about" class="py-20 bg-accent-900 leaf-pattern">
     <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
@@ -376,8 +458,14 @@
             </div>
             
             <div class="md:w-1/2">
-                <h2 class="text-3xl md:text-4xl font-bold font-display text-primary-100 mb-6">OUR STORY</h2>
-                <p class="text-primary-100 mb-6">
+  <div class="flex items-center gap-2 mb-6">
+    <h2 class="text-3xl md:text-4xl font-bold font-display text-primary-100">OUR STORY</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8 text-primary-100">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+    </svg>
+  </div>
+  <p class="text-primary-100 mb-6">
+
                     Founded in the heart of Las Cruces, Wildwest Smokeshop has been serving the Mesilla Valley community with premium products and expert knowledge since our opening. We're more than just a dispensary - we're a destination for cannabis enthusiasts and newcomers alike.
                 </p>
                 <p class="text-primary-100 mb-6">
@@ -418,27 +506,38 @@
         </div>
     </div>
 </section>
-    <!-- Testimonials -->
+<!-- Testimonials -->
 <section class="py-20 bg-bg-secondary">
     <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate__animated" data-animate="animate__fadeIn">
+            <!-- Heart Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
+                class="mx-auto mb-8 h-12 w-12 text-primary-800 animate__animated animate__pulse animate__infinite animate__slower">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+
             <h2 class="text-3xl md:text-4xl font-bold font-display text-primary-800 mb-4">WHAT OUR CUSTOMERS SAY</h2>
             <p class="text-text-secondary max-w-2xl mx-auto">Trusted by Las Cruces cannabis enthusiasts</p>
         </div>
-        
+
+        <!-- Testimonial Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <!-- Testimonial 1 -->
-            <div class="bg-primary-50 p-8 rounded-section">
+            <div class="bg-primary-50 p-8 rounded-section transition-all duration-300 hover:shadow-xl hover:-translate-y-2 transform translate-x-[-100%] opacity-0" 
+                 data-animate="slideIn">
                 <div class="flex items-center mb-4">
-                     <div class="text-yellow-500 text-2xl">★★★★★</div>
+                    <div class="text-yellow-500 text-2xl">★★★★★</div>
                     <span class="text-sm text-secondary-100 ml-2">6 reviews</span>
                 </div>
-                <p class="text-secondary-100 mb-6">
-                    "Got myself a vape battery that no other store had for a good price! They got a big variety here. From high-end glass to affordable glass, to smoking accessories, to good priced Nicotine Vapes! Support local!"
-                </p>
+                <div class="relative mb-6">
+                    <div class="absolute top-0 left-0 text-6xl text-primary-100 opacity-20 font-serif">"</div>
+                    <p class="text-secondary-100 relative z-10 pl-6 pt-4">
+                        "Got myself a vape battery that no other store had for a good price! They got a big variety here. From high-end glass to affordable glass, to smoking accessories, to good priced Nicotine Vapes! Support local!"
+                    </p>
+                </div>
                 <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-primary-100 mr-4 overflow-hidden">
-                        <img src="https://randomuser.me/api/portraits/men/22.JPG" alt="Lorenzo Martinez" class="w-full h-full object-cover">
+                    <div class="w-10 h-10 rounded-full bg-primary-100 mr-4 overflow-hidden border-2 border-primary-300">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Lorenzo Martinez" class="w-full h-full object-cover">
                     </div>
                     <div>
                         <h4 class="font-medium text-secondary-100">Lorenzo Martinez</h4>
@@ -448,17 +547,21 @@
             </div>
             
             <!-- Testimonial 2 -->
-            <div class="bg-primary-50 p-8 rounded-section">
+            <div class="bg-primary-50 p-8 rounded-section transition-all duration-300 hover:shadow-xl hover:-translate-y-2 transform translate-x-[-100%] opacity-0" 
+                 data-animate="slideIn" data-animate-delay="200">
                 <div class="flex items-center mb-4">
                     <div class="text-yellow-500 text-2xl">★★★★★</div>
                     <span class="text-sm text-secondary-100 ml-2">8 reviews</span>
                 </div>
-                <p class="text-secondary-100 mb-6">
-                    "Great selection. Friendly and knowledgeable staff. Def gonna hit them up again for my smoking needs."
-                </p>
+                <div class="relative mb-6">
+                    <div class="absolute top-0 left-0 text-6xl text-primary-100 opacity-20 font-serif">"</div>
+                    <p class="text-secondary-100 relative z-10 pl-6 pt-4">
+                        "Great selection. Friendly and knowledgeable staff. Def gonna hit them up again for my smoking needs."
+                    </p>
+                </div>
                 <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-primary-100 mr-4 overflow-hidden">
-                        <img src="https://randomuser.me/api/portraits/men/45.JPG" alt="Frankie Balderrama" class="w-full h-full object-cover">
+                    <div class="w-10 h-10 rounded-full bg-primary-100 mr-4 overflow-hidden border-2 border-primary-300">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Frankie Balderrama" class="w-full h-full object-cover">
                     </div>
                     <div>
                         <h4 class="font-medium text-secondary-100">Frankie Balderrama</h4>
@@ -468,17 +571,21 @@
             </div>
             
             <!-- Testimonial 3 -->
-            <div class="bg-primary-50 p-8 rounded-section">
+            <div class="bg-primary-50 p-8 rounded-section transition-all duration-300 hover:shadow-xl hover:-translate-y-2 transform translate-x-[-100%] opacity-0" 
+                 data-animate="slideIn" data-animate-delay="400">
                 <div class="flex items-center mb-4">
-                     <div class="text-yellow-500 text-2xl">★★★★★</div>
+                    <div class="text-yellow-500 text-2xl">★★★★★</div>
                     <span class="text-sm text-secondary-100 ml-2">1 review</span>
                 </div>
-                <p class="text-secondary-100 mb-6">
-                    "I love this smoke shop great customer service and even better pricing."
-                </p>
+                <div class="relative mb-6">
+                    <div class="absolute top-0 left-0 text-6xl text-primary-100 opacity-20 font-serif">"</div>
+                    <p class="text-secondary-100 relative z-10 pl-6 pt-4">
+                        "I love this smoke shop great customer service and even better pricing."
+                    </p>
+                </div>
                 <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-primary-100 mr-4 overflow-hidden">
-                        <img src="https://randomuser.me/api/portraits/women/33.JPG" alt="Desanae Gonzalez" class="w-full h-full object-cover">
+                    <div class="w-10 h-10 rounded-full bg-primary-100 mr-4 overflow-hidden border-2 border-primary-300">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Desanae Gonzalez" class="w-full h-full object-cover">
                     </div>
                     <div>
                         <h4 class="font-medium text-secondary-100">Desanae Gonzalez</h4>
@@ -489,27 +596,87 @@
         </div>
 
         <!-- Add Review Button -->
-       <div class="text-center mt-8">
-    <a href="https://www.google.com/search?sca_esv=f6861048bb8aaca5&rlz=1C1ONGR_enUS1071US1071&sxsrf=AHTn8zpFHjuIbDnEdNu2L11aV4Y5ejZV-w:1745947540361&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzfGpKN50LDezONnWF6VnybCETagP1XyPTfTJ8TXaiIecq3_c_pfOgpLlsyKUCDExH4ZYwsh0kqLww8huAy0Sq0NuvEuXcDNg-u_iiBZXATms1n1QmQ%3D%3D&q=Wild+West+smoke+shop+Reviews&sa=X&ved=2ahUKEwjYgsK34f2MAxW2ATQIHeKGNgYQ0bkNegQIIRAE&biw=1920&bih=957&dpr=1#lrd=0x86de3d0305fe4315:0x46cd7073ffe7282d,3,,,,"
-       target="_blank" class="inline-block">
-        <button class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-full font-medium transition duration-300 text-sm inline-flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-            </svg>
-            Add Your Review
-        </button>
-    </a>
-</div>
-
+        <div class="text-center mt-8 animate__animated" data-animate="animate__fadeIn">
+            <a href="https://www.google.com/search?sca_esv=f6861048bb8aaca5&rlz=1C1ONGR_enUS1071US1071&sxsrf=AHTn8zpFHjuIbDnEdNu2L11aV4Y5ejZV-w:1745947540361&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzfGpKN50LDezONnWF6VnybCETagP1XyPTfTJ8TXaiIecq3_c_pfOgpLlsyKUCDExH4ZYwsh0kqLww8huAy0Sq0NuvEuXcDNg-u_iiBZXATms1n1QmQ%3D%3D&q=Wild+West+smoke+shop+Reviews&sa=X&ved=2ahUKEwjYgsK34f2MAxW2ATQIHeKGNgYQ0bkNegQIIRAE&biw=1920&bih=957&dpr=1#lrd=0x86de3d0305fe4315:0x46cd7073ffe7282d,3,,,,"
+               target="_blank" class="inline-block">
+                <button class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-full font-medium transition duration-300 text-sm inline-flex items-center group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:rotate-90 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    Add Your Review
+                </button>
+            </a>
+        </div>
     </div>
 </section>
+
+<style>
+    @keyframes slideInFromLeft {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    .slide-in {
+        animation: slideInFromLeft 0.6s ease-out forwards;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate elements when they come into view
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('[data-animate="slideIn"]');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                const delay = element.getAttribute('data-animate-delay') || 0;
+                
+                if (elementPosition < windowHeight - 100) {
+                    setTimeout(() => {
+                        element.classList.add('slide-in');
+                    }, delay);
+                }
+            });
+        };
+        
+        // Run on load and scroll
+        animateOnScroll();
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Make heart icon pulse continuously
+        const heartIcon = document.querySelector('.animate__pulse');
+        if (heartIcon) {
+            const keepPulsing = () => {
+                heartIcon.classList.remove('animate__pulse');
+                void heartIcon.offsetWidth; // Trigger reflow
+                heartIcon.classList.add('animate__pulse');
+            };
+            
+            setInterval(keepPulsing, 8000);
+        }
+    });
+</script>
     <!-- Location Section -->
-<section class="py-20 bg-accent-900 rounded-t-3xl">
+<section id="location" class="py-20 bg-accent-900 rounded-t-3xl">
+
     <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold font-display text-primary-100 mb-4">VISIT US</h2>
-            <p class="text-primary-100 max-w-2xl mx-auto">Experience our premium products in person</p>
-        </div>
+       <div class="text-center mb-16">
+  <!-- Icon on top -->
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto mb-8 h-8 w-8 text-primary-100">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
+  </svg>
+
+  <h2 class="text-3xl md:text-4xl font-bold font-display text-primary-100 mb-4">VISIT US</h2>
+  <p class="text-primary-100 max-w-2xl mx-auto">Experience our premium products in person</p>
+</div>
+
 
         <div class="max-w-4xl mx-auto">
             <div class="flex flex-col md:flex-row bg-white rounded-section overflow-hidden shadow-lg">
@@ -568,17 +735,23 @@
     </div>
 </section>
 <!-- Image Gallery Section -->
-<section class="py-20 bg-secondary-50">
+<section id="gallery" class="py-20 bg-secondary-50">
     <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate__animated" data-animate="animate__fadeIn">
+            <!-- Icon on top -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto mb-8 h-8 w-8 text-primary-800">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+            </svg>
+
             <h2 class="text-3xl md:text-4xl font-bold font-display text-primary-800 mb-4">SHOP GALLERY</h2>
             <p class="text-text-secondary max-w-2xl mx-auto">Explore our premium products and shop atmosphere</p>
         </div>
-
+        
         <!-- Gallery Grid -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <!-- Gallery Item 1 -->
-            <div class="relative group overflow-hidden rounded-section h-48 md:h-64">
+            <!-- Gallery Items with staggered pop-in animation -->
+            <div class="gallery-item relative group overflow-hidden rounded-section h-48 md:h-64 transform scale-0 cursor-pointer" 
+                 data-animate="popIn" data-delay="0">
                 <img src="img/cbd.JPG" alt="Glass display case" 
                      class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center">
@@ -588,8 +761,8 @@
                 </div>
             </div>
 
-            <!-- Gallery Item 2 -->
-            <div class="relative group overflow-hidden rounded-section h-48 md:h-64">
+            <div class="gallery-item relative group overflow-hidden rounded-section h-48 md:h-64 transform scale-0 cursor-pointer" 
+                 data-animate="popIn" data-delay="100">
                 <img src="img/gallery7.JPG" alt="Vape collection" 
                      class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center">
@@ -599,8 +772,8 @@
                 </div>
             </div>
 
-            <!-- Gallery Item 3 -->
-            <div class="relative group overflow-hidden rounded-section h-48 md:h-64">
+            <div class="gallery-item relative group overflow-hidden rounded-section h-48 md:h-64 transform scale-0 cursor-pointer" 
+                 data-animate="popIn" data-delay="200">
                 <img src="img/about2.JPG" alt="Artisan glass piece" 
                      class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center">
@@ -610,8 +783,8 @@
                 </div>
             </div>
 
-            <!-- Gallery Item 4 -->
-            <div class="relative group overflow-hidden rounded-section h-48 md:h-64">
+            <div class="gallery-item relative group overflow-hidden rounded-section h-48 md:h-64 transform scale-0 cursor-pointer" 
+                 data-animate="popIn" data-delay="300">
                 <img src="img/about.JPG" alt="Shop interior" 
                      class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center">
@@ -621,8 +794,8 @@
                 </div>
             </div>
 
-            <!-- Gallery Item 5 -->
-            <div class="relative group overflow-hidden rounded-section h-48 md:h-64">
+            <div class="gallery-item relative group overflow-hidden rounded-section h-48 md:h-64 transform scale-0 cursor-pointer" 
+                 data-animate="popIn" data-delay="400">
                 <img src="img/vapes.JPG" alt="Smoking accessories" 
                      class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center">
@@ -632,7 +805,8 @@
                 </div>
             </div>
 
-            <div class="relative group overflow-hidden rounded-section h-48 md:h-64">
+            <div class="gallery-item relative group overflow-hidden rounded-section h-48 md:h-64 transform scale-0 cursor-pointer" 
+                 data-animate="popIn" data-delay="500">
                 <img src="img/gallery11.JPG" alt="Smoking accessories" 
                      class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center">
@@ -641,7 +815,9 @@
                     </svg>
                 </div>
             </div>
-                        <div class="relative group overflow-hidden rounded-section h-48 md:h-64">
+
+            <div class="gallery-item relative group overflow-hidden rounded-section h-48 md:h-64 transform scale-0 cursor-pointer" 
+                 data-animate="popIn" data-delay="600">
                 <img src="img/gallery9.JPG" alt="Smoking accessories" 
                      class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center">
@@ -650,8 +826,9 @@
                     </svg>
                 </div>
             </div>
-            <!-- Gallery Item 6 -->
-            <div class="relative group overflow-hidden rounded-section h-48 md:h-64">
+
+            <div class="gallery-item relative group overflow-hidden rounded-section h-48 md:h-64 transform scale-0 cursor-pointer" 
+                 data-animate="popIn" data-delay="700">
                 <img src="img/gallery3.JPG" alt="Customer browsing" 
                      class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center">
@@ -661,16 +838,149 @@
                 </div>
             </div>
         </div>
-
-
     </div>
+
+    <!-- Image Preview Modal -->
+    <div id="imagePreviewModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-80"></div>
+        <div class="relative w-full h-full flex items-center justify-center p-4">
+            <button id="closePreview" class="absolute top-4 right-4 text-white hover:text-gray-300 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="max-w-6xl w-full max-h-[90vh] flex justify-center">
+                <img id="previewImage" src="" alt="" class="object-contain max-w-full max-h-full rounded-lg">
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Image preview functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('imagePreviewModal');
+        const previewImage = document.getElementById('previewImage');
+        const closeButton = document.getElementById('closePreview');
+
+        // Add click event to each gallery item
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const imgSrc = this.querySelector('img').src;
+                const imgAlt = this.querySelector('img').alt;
+                
+                previewImage.src = imgSrc;
+                previewImage.alt = imgAlt;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            });
+        });
+
+        // Close modal when clicking the close button
+        closeButton.addEventListener('click', function() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore scrolling
+        });
+
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        });
+    });
+</script>
+
+<style>
+    @keyframes popIn {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        80% {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    
+    .pop-in {
+        animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    
+    .gallery-item {
+        transform-origin: center;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Make camera icon pulse
+        const cameraIcon = document.querySelector('.animate__tada');
+        if (cameraIcon) {
+            const keepPulsing = () => {
+                cameraIcon.classList.remove('animate__tada');
+                void cameraIcon.offsetWidth;
+                cameraIcon.classList.add('animate__tada');
+            };
+            setInterval(keepPulsing, 8000);
+        }
+        
+        // Gallery item animation
+        const animateGallery = function() {
+            const items = document.querySelectorAll('.gallery-item');
+            
+            items.forEach(item => {
+                const itemPosition = item.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                const delay = item.getAttribute('data-delay') || 0;
+                
+                if (itemPosition < windowHeight - 100) {
+                    setTimeout(() => {
+                        item.classList.add('pop-in');
+                    }, delay);
+                }
+            });
+        };
+        
+        // Set initial state
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach(item => {
+            item.style.opacity = '0';
+        });
+        
+        // Run on load and scroll
+        animateGallery();
+        window.addEventListener('scroll', animateGallery);
+    });
+</script>
+
     <!-- Instagram Feed Section -->
 <!-- Social Media Section -->
 <section class="py-20 bg-bg-secondary">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold font-display text-primary-800 mb-4">FOLLOW US</h2>
-            <p class="text-text-secondary max-w-2xl mx-auto mb-8">Follow us for the latest products, promotions, and shop updates</p>
+  <!-- Icon on top -->
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto mb-8 h-8 w-8 text-primary-800">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+  </svg>
+
+  <h2 class="text-3xl md:text-4xl font-bold font-display text-primary-800 mb-4">FOLLOW US</h2>
+  <p class="text-text-secondary max-w-2xl mx-auto mb-8">Follow us for the latest products, promotions, and shop updates</p>
+
             
             <!-- Social Icons -->
             <div class="flex justify-center space-x-6">
@@ -699,12 +1009,18 @@
 </section>
 </section>
     <!-- Newsletter -->
-    <section class="py-16 bg-primary-800 text-white">
-        <div class="container mx-auto px-6 text-center max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold font-display mb-6">STAY CONNECTED</h2>
-            <p class="text-secondary-100 mb-8">
-                Join our newsletter for exclusive product launches and VIP event info!
-            </p>
+    <section id="connect" class="py-16 bg-primary-800 text-white">
+<div class="container mx-auto px-6 text-center max-w-3xl">
+  <!-- Icon on top -->
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto mb-8 h-8 w-8 text-secondary-100-800">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3.75v16.5M2.25 12h19.5M6.375 17.25a4.875 4.875 0 0 0 4.875-4.875V12m6.375 5.25a4.875 4.875 0 0 1-4.875-4.875V12m-9 8.25h16.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H3.75a1.5 1.5 0 0 0-1.5 1.5v13.5a1.5 1.5 0 0 0 1.5 1.5Zm12.621-9.44c-1.409 1.41-4.242 1.061-4.242 1.061s-.349-2.833 1.06-4.242a2.25 2.25 0 0 1 3.182 3.182ZM10.773 7.63c1.409 1.409 1.06 4.242 1.06 4.242S9 12.22 7.592 10.811a2.25 2.25 0 1 1 3.182-3.182Z" />
+  </svg>
+
+  <h2 class="text-3xl md:text-4xl font-bold font-display mb-6">STAY CONNECTED</h2>
+  <p class="text-secondary-100 mb-8">
+    Join our newsletter for exclusive product launches and VIP event info!
+  </p>
+
             <form class="flex flex-col sm:flex-row gap-4">
                 <input type="email" placeholder="Your email address" 
                        class="flex-grow px-6 py-4 rounded-full text-primary focus:outline-none focus:ring-2 focus:ring-primary-600">
@@ -716,7 +1032,40 @@
             </form>
         </div>
     </section>
-    
+    <!-- Form Submission Success Popup -->
+<div id="formSuccessPopup" class="fixed inset-0 z-[999] flex items-center justify-center bg-black bg-opacity-90 px-4 hidden">
+    <div class="bg-white rounded-section p-8 max-w-md w-full mx-auto text-center shadow-xl">
+
+        
+        <!-- Content -->
+        <h3 class="text-2xl font-display font-bold text-primary-800 mb-4">THANK YOU!</h3>
+        <p class="text-text-secondary mb-6">You've been successfully subscribed to our newsletter. Look out for exclusive updates in your inbox!</p>
+        
+        <!-- Button -->
+        <button id="closeSuccessPopup" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-full font-medium transition duration-300 text-sm w-full sm:w-auto">
+            CONTINUE BROWSING
+        </button>
+    </div>
+</div>
+
+<script>
+    // Simple implementation to show/hide the popup
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('#connect form');
+        const successPopup = document.getElementById('formSuccessPopup');
+        const closeBtn = document.getElementById('closeSuccessPopup');
+        
+        // In a real implementation, you would replace this with actual form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            successPopup.classList.remove('hidden');
+        });
+        
+        closeBtn.addEventListener('click', function() {
+            successPopup.classList.add('hidden');
+        });
+    });
+</script>
 <!-- Footer -->
 <footer class="bg-secondary-900 text-white pt-16 pb-8">
     <div class="container mx-auto px-6">
@@ -737,28 +1086,23 @@
             <div class="md:text-left">
                 <h4 class="text-sm uppercase font-bold mb-4 text-primary-400">Shop</h4>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-primary-300 hover:text-white text-sm">Gallery</a></li>
-                    <li><a href="#" class="text-primary-300 hover:text-white text-sm">Glass</a></li>
-                    <li><a href="#" class="text-primary-300 hover:text-white text-sm">Vapes</a></li>
-                    <li><a href="#" class="text-primary-300 hover:text-white text-sm">Other</a></li>
+<li><a href="#gallery" class="text-primary-300 text-sm hover:font-bold">Gallery</a></li>
+                    <li><a href="#collections" class="text-primary-300 hover:font-bold text-sm">Our Collection</a></li>
                 </ul>
             </div>
             
             <div class="md:text-left">
                 <h4 class="text-sm uppercase font-bold mb-4 text-primary-400">About</h4>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-primary-300 hover:text-white text-sm">Our Story</a></li>
-                    <li><a href="#" class="text-primary-300 hover:text-white text-sm">Location</a></li>
-                    <li><a href="#" class="text-primary-300 hover:text-white text-sm">Stay Connected</a></li>
+                    <li><a href="#about" class="text-primary-300 hover:font-bold text-sm">Our Story</a></li>
+                    <li><a href="#location" class="text-primary-300 hover:font-bold text-sm">Location</a></li>
                 </ul>
             </div>
             
             <div class="md:text-left">
                 <h4 class="text-sm uppercase font-bold mb-4 text-primary-400">Help</h4>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-primary-300 hover:text-white text-sm">Contact Us</a></li>
-                    <li><a href="#" class="text-primary-300 hover:text-white text-sm">FAQ</a></li>
-                    <li><a href="#" class="text-primary-300 hover:text-white text-sm">Returns</a></li>
+                    <li><a href="contact.html" class="text-primary-300 hover:font-bold text-sm">Contact Us</a></li>
                 </ul>
             </div>
         </div>
